@@ -132,7 +132,7 @@ When running Ermi's Docker Compose stack from the submitted repository:
 
 All team members are verified contributors from the git repository commit history:
 
-- **Ermias Amare (`@ermizamr`)** — Lead Developer & Accessibility Architect (73 commits)
+- **Ermyas Misiker (`@ermizamr`)** — Lead Developer & Accessibility Architect (73 commits)
 - **Habib Seid (`@habibi-code`)** — Repository Lead & Full-Stack Engineer (24 commits)
 - **Eba Mengistu Baisa (`@EbaMengistu1`)** — Channels & Bot Integration Engineer (4 commits)
 - **Roba W. (`@robaw1`)** — AI Tutor Prompt Engineer & Multilingual Localization (1 commit)

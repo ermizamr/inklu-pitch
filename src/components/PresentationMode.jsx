@@ -742,7 +742,7 @@ export default function PresentationMode({ isOpen, onClose }) {
                     Hackathon Team Contributors
                   </span>
                   <p className="font-heading font-bold text-sm sm:text-base text-[#18362E]">
-                    Ermias Amare (Lead) • Habib Seid (Repo Lead) • Eba Mengistu Baisa (Channels) • Roba W. (Prompts)
+                    Ermyas Misiker (Lead) • Habib Seid (Repo Lead) • Eba Mengistu Baisa (Channels) • Roba W. (Prompts)
                   </p>
                 </div>
 

@@ -539,7 +539,7 @@ export const ACCESSIBILITY_EVIDENCE = {
 
 export const TEAM_MEMBERS = [
   {
-    name: "Ermias Amare",
+    name: "Ermyas Misiker",
     github: "ermizamr",
     role: "Lead Developer & Accessibility Architect",
     avatar: "EA",
@@ -801,7 +801,7 @@ export const PRESENTATION_SLIDES = [
     subtitle: "Confirmed Hackathon Contributors and Long-Term Ambition",
     category: "Team & Future",
     keyPoints: [
-      "Confirmed Team: Ermias Amare (Lead), Habib Seid (Repo Lead), Eba Mengistu Baisa (Channels), Roba W. (Prompts).",
+      "Confirmed Team: Ermyas Misiker (Lead), Habib Seid (Repo Lead), Eba Mengistu Baisa (Channels), Roba W. (Prompts).",
       "Immediate Scope: Finished & operational Level 1 widget, Level 2 REST API, RAG citations, and WCAG AA gate.",
       "Roadmap Horizon: Multi-party WebRTC live operator archiving and USSD shortcode menu (*804#) for feature phones.",
       "Open Standards: Apache / MIT licensed open libraries with schema.org/JobPosting and LTI 1.3 compliance.",
