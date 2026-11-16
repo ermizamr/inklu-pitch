@@ -1,6 +1,11 @@
+/**
+ * AssetLicensesModal — the provenance record. Set like a registry
+ * document: hairline rules, mono annotations, stamped assurance.
+ */
 import { useEffect } from "react";
 import { ASSET_LICENSES } from "../data/contentData";
-import { X, ExternalLink, ShieldCheck, FileText } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
+import { Stamp } from "./ui/primitives";
 
 export default function AssetLicensesModal({ isOpen, onClose }) {
   useEffect(() => {
@@ -20,32 +25,33 @@ export default function AssetLicensesModal({ isOpen, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="licenses-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#18362E]/80 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/90"
       onClick={onClose}
     >
       <div
-        className="relative max-w-3xl w-full max-h-[85vh] bg-[#FFFFFF] rounded-2xl shadow-2xl overflow-hidden border border-[#D9DFD6] flex flex-col"
+        className="slide-enter relative max-w-3xl w-full max-h-[85vh] bg-paper text-body overflow-hidden border border-rule flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[#D9DFD6] bg-[#F8F9F4]">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#183E34] text-[#F2C675] flex items-center justify-center">
-              <FileText className="w-5 h-5" />
-            </div>
-            <div>
-              <h2 id="licenses-modal-title" className="font-heading font-bold text-xl text-[#18362E]">
-                Asset Licenses &amp; Provenance Record
-              </h2>
-              <p className="text-xs text-[#4B635B] mt-0.5">
-                Permissive Open-Source Software and Authentic Project Assets
-              </p>
-            </div>
+        <div className="flex items-start justify-between gap-4 px-5 sm:px-6 py-4 border-b border-rule bg-paper-dim/60">
+          <div>
+            <span className="annotation text-forest block">
+              Registry · provenance
+            </span>
+            <h2
+              id="licenses-modal-title"
+              className="font-display font-medium text-xl sm:text-2xl text-ink mt-1"
+            >
+              Asset licenses &amp; provenance record
+            </h2>
+            <p className="text-xs text-muted mt-1">
+              Permissive open-source software and authentic project assets.
+            </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-lg text-[#18362E] hover:bg-[#EAEFE8] transition-colors focus-visible:outline-[#183E34]"
+            className="p-2 text-muted hover:text-ink transition-colors cursor-pointer shrink-0"
             aria-label="Close licenses modal"
           >
             <X className="w-5 h-5" />
@@ -53,63 +59,71 @@ export default function AssetLicensesModal({ isOpen, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto p-6 space-y-4">
-          <div className="p-4 rounded-xl bg-[#F0F3EC] border border-[#D9DFD6] text-xs text-[#18362E] leading-relaxed">
-            <strong className="font-bold text-[#183E34] block mb-1">
-              Source of Truth &amp; Authenticity Policy:
+        <div className="overflow-y-auto px-5 sm:px-6 py-5 space-y-5">
+          <div className="border-l-2 border-gold-deep pl-4 text-xs leading-relaxed text-body">
+            <strong className="font-semibold text-ink block mb-1">
+              Source-of-truth &amp; authenticity policy
             </strong>
-            All visual product representations shown on this website are authentic, unedited
-            screenshots and video recordings from the submitted Hackathon repository branch (
-            <code className="text-[#183E34] font-mono bg-[#FFFFFF] px-1 py-0.5 rounded border border-[#D9DFD6]">
+            All visual product representations shown on this website are
+            authentic, unedited screenshots and video recordings from the
+            submitted hackathon repository branch{" "}
+            <code className="font-mono text-[11px] text-forest border border-rule bg-paper-raised px-1 py-0.5">
               origin/ermi
             </code>
-            ). No fictional or AI-generated UI mocks are presented as actual application screens.
+            . No fictional or AI-generated UI mocks are presented as actual
+            application screens.
           </div>
 
-          <div className="divide-y divide-[#D9DFD6]/70 border border-[#D9DFD6] rounded-xl overflow-hidden">
+          <ul className="border-t border-rule">
             {ASSET_LICENSES.map((asset, idx) => (
-              <div key={idx} className="p-4 bg-white hover:bg-[#F8F9F4]/60 transition-colors">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="font-heading font-semibold text-sm text-[#18362E] flex items-center gap-2">
+              <li
+                key={idx}
+                className="py-4 border-b border-rule flex flex-wrap items-start justify-between gap-x-6 gap-y-2"
+              >
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="font-mono text-[11px] text-muted tabular-nums">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-display font-medium text-base text-ink">
                       {asset.name}
-                      <span className="text-[10px] px-2 py-0.5 rounded-full font-mono font-medium bg-[#183E34]/10 text-[#183E34] border border-[#183E34]/20">
-                        {asset.license}
-                      </span>
                     </h3>
-                    <p className="text-xs text-[#4B635B] mt-1">{asset.purpose}</p>
-                    <div className="mt-2 text-[11px] text-[#4B635B]/80 font-mono">
-                      Source: {asset.source}
-                    </div>
+                    <span className="annotation text-gold-deep">
+                      {asset.license}
+                    </span>
                   </div>
-                  {asset.url.startsWith("http") && (
-                    <a
-                      href={asset.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-[#183E34] hover:underline flex items-center gap-1 shrink-0 font-medium"
-                    >
-                      Official URL <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
+                  <p className="text-xs text-muted mt-1.5 leading-relaxed">
+                    {asset.purpose}
+                  </p>
+                  <p className="font-mono text-[10.5px] text-muted mt-1.5">
+                    source: {asset.source}
+                  </p>
                 </div>
-              </div>
+                {asset.url.startsWith("http") && (
+                  <a
+                    href={asset.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-mono text-[11px] text-forest hover:underline shrink-0"
+                  >
+                    official url
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 bg-[#F8F9F4] border-t border-[#D9DFD6] flex items-center justify-between text-xs text-[#4B635B]">
-          <span className="flex items-center gap-1.5 font-medium">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            100% Permissive Licenses Compliant
-          </span>
+        <div className="px-5 sm:px-6 py-3.5 border-t border-rule bg-paper-dim/60 flex flex-wrap items-center justify-between gap-3">
+          <Stamp>All licenses permissive</Stamp>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-[#183E34] text-white text-xs font-semibold rounded-lg hover:bg-[#123028] transition-colors"
+            className="px-4 py-2 bg-forest text-paper text-xs font-semibold hover:bg-ink transition-colors cursor-pointer"
           >
-            Close Record
+            Close record
           </button>
         </div>
       </div>
