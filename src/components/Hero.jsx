@@ -161,7 +161,7 @@ export default function Hero({ onOpenPresentation }) {
               href={BRAND.branchUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-xs text-muted hover:text-forest transition-colors"
+              className="inline-flex items-center gap-2 py-2 -my-2 font-mono text-xs text-muted hover:text-forest transition-colors"
               title="Submitted code, branch ermi"
             >
               <Github />

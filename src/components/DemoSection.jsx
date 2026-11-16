@@ -262,7 +262,7 @@ export default function DemoSection() {
                   href={BRAND.liveDemoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest border-b border-forest/40 hover:border-forest transition-colors"
+                  className="inline-flex items-center gap-1.5 py-2 -my-2 text-sm font-semibold text-forest border-b border-forest/40 hover:border-forest transition-colors"
                 >
                   Launch live MVP
                   <ExternalLink className="w-3.5 h-3.5" />

@@ -26,13 +26,13 @@ export default function Footer({ onOpenPresentation, onOpenLicenses }) {
 
           <div className="md:col-span-3">
             <span className="annotation text-forest block mb-4">Record</span>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-1 text-sm">
               <li>
                 <a
                   href={BRAND.branchUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-muted hover:text-forest transition-colors"
+                  className="inline-block py-1.5 font-mono text-xs text-muted hover:text-forest transition-colors"
                 >
                   source/ermi — submitted branch
                 </a>
@@ -42,7 +42,7 @@ export default function Footer({ onOpenPresentation, onOpenLicenses }) {
                   href={BRAND.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-muted hover:text-forest transition-colors"
+                  className="inline-block py-1.5 font-mono text-xs text-muted hover:text-forest transition-colors"
                 >
                   habibi-code/Savanna-static-pages
                 </a>
@@ -52,7 +52,7 @@ export default function Footer({ onOpenPresentation, onOpenLicenses }) {
                   href={BRAND.liveDemoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-muted hover:text-forest transition-colors"
+                  className="inline-block py-1.5 font-mono text-xs text-muted hover:text-forest transition-colors"
                 >
                   live Cloud Run MVP
                 </a>
@@ -61,7 +61,7 @@ export default function Footer({ onOpenPresentation, onOpenLicenses }) {
                 <button
                   type="button"
                   onClick={onOpenLicenses}
-                  className="font-mono text-xs text-muted hover:text-forest transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                  className="font-mono text-xs text-muted hover:text-forest transition-colors inline-flex items-center gap-1.5 py-1.5 cursor-pointer"
                 >
                   <FileCheck className="w-3 h-3" />
                   asset licenses & provenance
@@ -88,7 +88,7 @@ export default function Footer({ onOpenPresentation, onOpenLicenses }) {
           <button
             type="button"
             onClick={onOpenPresentation}
-            className="annotation text-forest hover:text-gold-deep transition-colors inline-flex items-center gap-2 cursor-pointer"
+            className="annotation text-forest hover:text-gold-ink transition-colors inline-flex items-center gap-2 py-2 -my-2 cursor-pointer"
           >
             <Tv className="w-3.5 h-3.5" />
             Presenting? Open pitch deck

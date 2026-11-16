@@ -41,7 +41,7 @@ export default function Navbar({ onOpenPresentation }) {
             <a
               key={a.id}
               href={a.href}
-              className="annotation text-muted hover:text-forest transition-colors"
+              className="annotation text-muted hover:text-forest transition-colors inline-block py-2 -my-2"
             >
               <span className="text-gold-deep mr-1.5">{a.numeral}</span>
               {a.label}

@@ -54,7 +54,7 @@ export default function TeamVision({ onOpenPresentation }) {
                       href={`https://github.com/${m.github}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-mono text-xs text-forest hover:underline"
+                      className="inline-block font-mono text-xs text-forest hover:underline py-1.5 -my-1.5"
                     >
                       @{m.github}
                     </a>
