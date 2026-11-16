@@ -57,15 +57,28 @@ export default function Footer({ onOpenPresentation, onOpenLicenses }) {
               Submitted to the Digital Bridge Accessibility Hackathon 2026 (Track 3).
             </p>
 
-            <div className="flex items-center gap-2 pt-2">
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <a
+                href={BRAND.liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F2C675] hover:bg-[#E5B860] text-xs font-bold text-[#18362E] transition-colors shadow-xs"
+                title="Launch live deployed MVP on Google Cloud Run"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span>Live Cloud MVP</span>
+                <ExternalLink className="w-3 h-3 text-[#18362E]" />
+              </a>
+
               <a
                 href={BRAND.branchUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#122822] hover:bg-[#183E34] text-xs font-mono text-[#F8F9F4] border border-[#245246] transition-colors"
+                title="View submitted repository on GitHub (branch: ermi)"
               >
                 <Github className="w-3.5 h-3.5 text-[#F2C675]" />
-                <span>Submitted Repository</span>
+                <span>GitHub (branch: ermi)</span>
                 <ExternalLink className="w-3 h-3 text-[#A3B8B0]" />
               </a>
             </div>

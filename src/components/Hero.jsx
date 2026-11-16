@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { 
-  ArrowRight, 
   Tv, 
   ZoomIn, 
   ChevronDown,
   Sparkles,
   Languages,
   Accessibility,
-  BookOpenCheck
+  BookOpenCheck,
+  ExternalLink
 } from "lucide-react";
+import { BRAND } from "../data/contentData";
+
+const Github = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
 
 export default function Hero({ onOpenPresentation, onSelectImage }) {
   const [activePreviewTab, setActivePreviewTab] = useState("tutor");
@@ -102,31 +110,39 @@ export default function Hero({ onOpenPresentation, onSelectImage }) {
 
             {/* Call to Actions */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
+              <a
+                href={BRAND.liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#F2C675] text-[#18362E] font-bold text-sm hover:bg-[#E5B860] shadow-md hover:shadow-lg transition-all focus-visible:outline-[#183E34] cursor-pointer"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span>Launch Live MVP Demo</span>
+                <ExternalLink className="w-4 h-4 text-[#18362E]" />
+              </a>
+
               <button
                 type="button"
                 onClick={onOpenPresentation}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#183E34] text-[#F8F9F4] font-bold text-sm hover:bg-[#123028] shadow-md hover:shadow-lg transition-all focus-visible:outline-[#183E34] cursor-pointer"
+                className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-[#183E34] text-[#F8F9F4] font-bold text-sm hover:bg-[#123028] shadow-md hover:shadow-lg transition-all focus-visible:outline-[#183E34] cursor-pointer"
               >
                 <Tv className="w-4 h-4 text-[#F2C675]" />
-                <span>Launch Pitch Mode</span>
+                <span>Pitch Mode</span>
                 <kbd className="px-1.5 py-0.5 bg-[#122822] text-[#F2C675] text-[10px] rounded font-mono border border-[#245246]">
                   P
                 </kbd>
               </button>
 
               <a
-                href="#showcase"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white text-[#18362E] font-bold text-sm border border-[#D9DFD6] hover:bg-[#EAEFE8] shadow-xs transition-all focus-visible:outline-[#183E34]"
+                href={BRAND.branchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-white text-[#18362E] font-mono font-semibold text-xs border border-[#D9DFD6] hover:bg-[#EAEFE8] shadow-xs transition-all focus-visible:outline-[#183E34]"
+                title="View Submitted Code on GitHub (branch: ermi)"
               >
-                <span>Product Showcase</span>
-                <ArrowRight className="w-4 h-4 text-[#183E34]" />
-              </a>
-
-              <a
-                href="#demo"
-                className="inline-flex items-center gap-1.5 px-3 py-3.5 text-sm font-semibold text-[#183E34] hover:underline"
-              >
-                <span>Live Demo</span>
+                <Github className="w-4 h-4 text-[#183E34]" />
+                <span>GitHub (ermi)</span>
+                <ExternalLink className="w-3 h-3 text-[#4B635B]" />
               </a>
             </div>
 

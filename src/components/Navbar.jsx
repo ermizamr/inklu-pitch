@@ -6,6 +6,14 @@ import {
   ExternalLink, 
   FileCheck
 } from "lucide-react";
+import { BRAND } from "../data/contentData";
+
+const Github = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
 
 export default function Navbar({ onOpenPresentation, onOpenLicenses }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -100,22 +108,37 @@ export default function Navbar({ onOpenPresentation, onOpenLicenses }) {
         </nav>
 
         {/* Header Action Buttons */}
-        <div className="hidden sm:flex items-center gap-3">
-          {/* Asset Licenses Trigger */}
-          <button
-            type="button"
-            onClick={onOpenLicenses}
-            className="text-xs text-[#4B635B] hover:text-[#183E34] font-medium px-2.5 py-1.5 rounded-md hover:bg-[#EAEFE8] transition-colors flex items-center gap-1.5"
+        <div className="hidden sm:flex items-center gap-2.5">
+          {/* GitHub Repo Button */}
+          <a
+            href={BRAND.branchUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono font-semibold text-[#18362E] hover:text-[#183E34] bg-white hover:bg-[#EAEFE8] border border-[#D9DFD6] rounded-xl shadow-2xs transition-all focus-visible:outline-[#183E34]"
+            title="View submitted repository on GitHub (branch: ermi)"
           >
-            <FileCheck className="w-3.5 h-3.5 text-[#183E34]" />
-            <span>Licenses</span>
-          </button>
+            <Github className="w-3.5 h-3.5 text-[#183E34]" />
+            <span>GitHub</span>
+          </a>
+
+          {/* Launch Live Cloud MVP CTA */}
+          <a
+            href={BRAND.liveDemoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-[#18362E] bg-[#F2C675] hover:bg-[#E5B860] border border-[#D4A54B] rounded-xl shadow-xs transition-all focus-visible:outline-[#183E34]"
+            title="Launch live deployed MVP on Google Cloud Run"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+            <span>Live MVP</span>
+            <ExternalLink className="w-3 h-3 text-[#18362E]" />
+          </a>
 
           {/* Presentation Mode Toggle - Prominent */}
           <button
             type="button"
             onClick={onOpenPresentation}
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-[#F8F9F4] bg-[#18362E] hover:bg-[#122822] rounded-xl shadow-xs transition-all cursor-pointer border border-[#245246] hover:scale-[1.02] focus-visible:outline-[#183E34]"
+            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold text-[#F8F9F4] bg-[#18362E] hover:bg-[#122822] rounded-xl shadow-xs transition-all cursor-pointer border border-[#245246] hover:scale-[1.02] focus-visible:outline-[#183E34]"
             title="Launch full-screen pitch presentation deck (Shortcut: Press P)"
           >
             <Tv className="w-3.5 h-3.5 text-[#F2C675]" />
@@ -125,14 +148,16 @@ export default function Navbar({ onOpenPresentation, onOpenLicenses }) {
             </kbd>
           </button>
 
-          {/* Launch Demo CTA */}
-          <a
-            href="#demo"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-[#18362E] bg-white hover:bg-[#EAEFE8] border border-[#D9DFD6] rounded-xl shadow-2xs transition-all focus-visible:outline-[#183E34]"
+          {/* Asset Licenses Trigger */}
+          <button
+            type="button"
+            onClick={onOpenLicenses}
+            className="text-xs text-[#4B635B] hover:text-[#183E34] font-medium px-2 py-1.5 rounded-md hover:bg-[#EAEFE8] transition-colors flex items-center gap-1"
+            title="View open source asset licenses"
           >
-            <span>Demo</span>
-            <ExternalLink className="w-3 h-3 text-[#183E34]" />
-          </a>
+            <FileCheck className="w-3.5 h-3.5 text-[#183E34]" />
+            <span>Licenses</span>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -174,6 +199,18 @@ export default function Navbar({ onOpenPresentation, onOpenLicenses }) {
             ))}
           </nav>
           <div className="pt-3 border-t border-[#D9DFD6] flex flex-col gap-2">
+            <a
+              href={BRAND.liveDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-3 text-xs font-bold text-[#18362E] bg-[#F2C675] rounded-xl shadow-xs"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              <span>Launch Live Cloud MVP</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#18362E]" />
+            </a>
+
             <button
               type="button"
               onClick={() => {
@@ -187,12 +224,14 @@ export default function Navbar({ onOpenPresentation, onOpenLicenses }) {
             </button>
             <div className="flex gap-2">
               <a
-                href="#demo"
+                href={BRAND.branchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-bold text-[#18362E] bg-white border border-[#D9DFD6] rounded-xl"
               >
-                <span>Live Demo</span>
-                <ExternalLink className="w-3 h-3 text-[#183E34]" />
+                <Github className="w-3.5 h-3.5 text-[#183E34]" />
+                <span>GitHub</span>
               </a>
               <button
                 type="button"
@@ -200,7 +239,7 @@ export default function Navbar({ onOpenPresentation, onOpenLicenses }) {
                   setMobileMenuOpen(false);
                   onOpenLicenses();
                 }}
-                className="px-3 py-2 text-xs font-medium text-[#4B635B] bg-white border border-[#D9DFD6] rounded-xl"
+                className="px-4 py-2 text-xs font-medium text-[#4B635B] bg-white border border-[#D9DFD6] rounded-xl"
               >
                 Licenses
               </button>

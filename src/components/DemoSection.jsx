@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DEMO_DATA } from "../data/contentData";
+import { DEMO_DATA, BRAND } from "../data/contentData";
 import { 
   ExternalLink, 
   Send, 
@@ -9,6 +9,13 @@ import {
   Check,
   UserCheck
 } from "lucide-react";
+
+const Github = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
 
 export default function DemoSection() {
   const [selectedPromptIndex, setSelectedPromptIndex] = useState(0);
@@ -93,7 +100,7 @@ export default function DemoSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 text-left space-y-4">
+        <div className="max-w-3xl mb-12 text-left space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183E34]/10 text-[#183E34] text-xs font-semibold tracking-wider uppercase">
             <span>06 • Interactive Demo &amp; Verification</span>
           </div>
@@ -101,8 +108,50 @@ export default function DemoSection() {
             Experience Inklu: live walkthrough, verified URLs, and interactive simulation.
           </h2>
           <p className="text-base sm:text-lg text-[#334D44] leading-relaxed">
-            Verify our submitted hackathon implementation through three independent avenues: watch the live recorded video walkthrough, launch the local multi-container endpoints, or test the in-page learner simulation widget below.
+            Verify our submitted hackathon implementation through four independent avenues: launch the live Cloud Run MVP, watch the recorded walkthrough video, inspect the submitted GitHub repository, or test the in-page learner simulation widget below.
           </p>
+        </div>
+
+        {/* Live Cloud Run MVP & GitHub Spotlight Banner */}
+        <div className="mb-14 rounded-2xl bg-[#122822] border-2 border-[#F2C675] p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#091713] border border-[#245246] text-[#F2C675] font-mono text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Live Google Cloud Run Deployment</span>
+              </div>
+              <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
+                Launch the Live Savanna Course Demo
+              </h3>
+              <p className="text-xs sm:text-sm text-[#D9DFD6] leading-relaxed">
+                Deployed live on Google Cloud Run directly from submitted branch <code className="font-mono text-[#F2C675] bg-[#091713] px-1.5 py-0.5 rounded border border-[#183E34]">ermi</code>.
+                Interact with the live course page, ask questions in Amharic or English, inspect citations, and test the embedded accessibility assistant.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
+              <a
+                href={BRAND.liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#F2C675] text-[#18362E] font-bold text-sm hover:bg-[#E5B860] shadow-md transition-all cursor-pointer"
+              >
+                <span>Launch Live MVP Demo</span>
+                <ExternalLink className="w-4 h-4 text-[#18362E]" />
+              </a>
+
+              <a
+                href={BRAND.branchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-[#091713] hover:bg-[#183E34] text-white font-mono text-xs font-bold border border-[#245246] shadow-xs transition-all"
+              >
+                <Github className="w-4 h-4 text-[#F2C675]" />
+                <span>GitHub (ermi)</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#A3B8B0]" />
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Video Walkthrough Player */}
@@ -140,10 +189,10 @@ export default function DemoSection() {
         <div className="mb-20">
           <div className="max-w-2xl mb-6">
             <h3 className="font-heading font-bold text-2xl text-[#18362E]">
-              Verified Submitted Deployment Endpoints
+              Verified Cloud &amp; Local Endpoints
             </h3>
             <p className="text-xs text-[#4B635B] mt-1">
-              When running the multi-container stack (<code className="font-mono text-[#183E34]">docker compose up -d</code>), the following routes are accessible:
+              Test directly on Google Cloud Run or launch locally via Docker Compose (<code className="font-mono text-[#183E34]">docker compose up -d</code>):
             </p>
           </div>
 
@@ -154,11 +203,13 @@ export default function DemoSection() {
                 className="p-5 rounded-xl bg-white border border-[#D9DFD6] hover:border-[#183E34] transition-all shadow-xs flex flex-col justify-between"
               >
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-2">
                     <span className="font-heading font-bold text-sm text-[#18362E]">
                       {item.name}
                     </span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 shrink-0">
+                      {item.badge || "Verified"}
+                    </span>
                   </div>
                   <p className="text-xs text-[#4B635B] leading-relaxed">
                     {item.description}
@@ -166,7 +217,7 @@ export default function DemoSection() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-[#D9DFD6] flex items-center justify-between">
-                  <code className="text-[11px] font-mono text-[#183E34] truncate max-w-[170px]">
+                  <code className="text-[11px] font-mono text-[#183E34] truncate max-w-[170px]" title={item.url}>
                     {item.url}
                   </code>
                   <div className="flex items-center gap-2">

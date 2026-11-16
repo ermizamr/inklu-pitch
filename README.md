@@ -1,9 +1,10 @@
 # Inklu — Learning Without Barriers (Track 3 Pitch Website)
 
 > **Digital Bridge Accessibility Hackathon 2026 — Track 3 Submission**  
+> **🚀 Live Cloud Run MVP Demo:** [`https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html`](https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html)  
 > **Source of Truth Repository:** [`https://github.com/habibi-code/Savanna-static-pages`](https://github.com/habibi-code/Savanna-static-pages)  
-> **Submitted Branch:** `ermi`  
-> **Standard:** WCAG 2.2 Level AA (27/27 axe-core automated rules passing, 0 violations)
+> **Submitted Branch:** [`ermi`](https://github.com/habibi-code/Savanna-static-pages/tree/ermi)  
+> **Standard:** WCAG 2.2 Level AA Evaluated (27/27 axe-core automated rules passing, 0 violations)
 
 ---
 

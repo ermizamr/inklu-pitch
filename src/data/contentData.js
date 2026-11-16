@@ -14,6 +14,8 @@ export const BRAND = {
   standard: "WCAG 2.2 Level AA",
   repoUrl: "https://github.com/habibi-code/Savanna-static-pages",
   branchUrl: "https://github.com/habibi-code/Savanna-static-pages/tree/ermi",
+  liveDemoUrl: "https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html",
+  cloudRunBase: "https://savanna-assistant-303345096403.us-central1.run.app",
 };
 
 export const CORE_STATS = [
@@ -590,28 +592,38 @@ export const TEAM_MEMBERS = [
 export const DEMO_DATA = {
   submittedUrls: [
     {
-      name: "Savanna Host Course Demo",
-      url: "http://localhost:8080/pages/concept-with-navigation.html",
-      description: "Live ALX Savanna course page with embedded Inklu widget, switch navigation, and image describer.",
-    },
-    {
-      name: "Proof Outside Savanna (Blank Host)",
-      url: "http://localhost:8080/demo/blank.html",
-      description: "Empty HTML page with zero Savanna CSS and zero Bootstrap, proving 100% portable plug-and-play embed.",
+      name: "Savanna Host Course Demo (Live Cloud Run MVP)",
+      url: "https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html",
+      localUrl: "http://localhost:8080/pages/concept-with-navigation.html",
+      badge: "Production Cloud Run",
+      description: "Live ALX Savanna course page deployed on Google Cloud Run with embedded Inklu widget, switch navigation, and image describer.",
     },
     {
       name: "Interactive OpenAPI 3.0 Documentation",
-      url: "http://localhost:8000/docs",
+      url: "https://savanna-assistant-303345096403.us-central1.run.app/docs",
+      localUrl: "http://localhost:8000/docs",
+      badge: "Swagger Specs",
       description: "Complete interactive Swagger documentation for all 18 endpoints across chat, speech, translate, and LTI.",
     },
     {
       name: "Human Operator Live Help Desk",
-      url: "http://localhost:8080/operator/index.html",
+      url: "https://savanna-assistant-303345096403.us-central1.run.app/operator/index.html",
+      localUrl: "http://localhost:8080/operator/index.html",
+      badge: "Live Queue",
       description: "Real-time ticket queue for human advocates receiving escalated learner sessions and context packets.",
     },
     {
+      name: "Proof Outside Savanna (Blank Host)",
+      url: "https://savanna-assistant-303345096403.us-central1.run.app/demo/blank.html",
+      localUrl: "http://localhost:8080/demo/blank.html",
+      badge: "Portable Embed",
+      description: "Empty HTML page with zero Savanna CSS and zero Bootstrap, proving 100% portable plug-and-play embed.",
+    },
+    {
       name: "Teacher Insights & Analytics Portal",
-      url: "http://localhost:8080/teacher-ui/index.html",
+      url: "https://savanna-assistant-303345096403.us-central1.run.app/teacher-ui/index.html",
+      localUrl: "http://localhost:8080/teacher-ui/index.html",
+      badge: "Analytics UI",
       description: "Anonymous instructor dashboard tracking topic confusion frequency and Ge'ez calendar timestamps.",
     },
   ],

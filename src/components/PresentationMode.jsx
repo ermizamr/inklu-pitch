@@ -9,6 +9,13 @@ import {
   ExternalLink
 } from "lucide-react";
 
+const Github = ({ className = "w-3.5 h-3.5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
 export default function PresentationMode({ isOpen, onClose }) {
   const totalSlides = 8;
   const [currentSlideIndex, setCurrentSlideIndex] = useState(() => {
@@ -124,8 +131,32 @@ export default function PresentationMode({ isOpen, onClose }) {
           <span>0{totalSlides}</span>
         </div>
 
-        {/* Right Icon Controls */}
+        {/* Right Icon Controls & Quick Links */}
         <div className="flex items-center gap-2">
+          <a
+            href="https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F2C675] text-[#18362E] text-xs font-bold hover:bg-[#E5B860] transition-colors shadow-xs"
+            title="Launch Live Cloud Run MVP Demo"
+          >
+            <span>Live MVP</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
+
+          <a
+            href="https://github.com/habibi-code/Savanna-static-pages/tree/ermi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0F2822] text-[#F8F9F4] text-xs font-mono hover:bg-[#183E34] border border-[#245246] transition-colors"
+            title="View Submitted Code on GitHub (branch: ermi)"
+          >
+            <Github className="w-3.5 h-3.5 text-[#F2C675]" />
+            <span>GitHub</span>
+          </a>
+
+          <div className="hidden sm:block w-px h-5 bg-[#183E34] mx-1"></div>
+
           <button
             type="button"
             onClick={() => setShowHelp(!showHelp)}
@@ -620,50 +651,87 @@ export default function PresentationMode({ isOpen, onClose }) {
               </div>
 
               {/* Live Verification Links Box */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+                {/* Primary Live Demo Card */}
                 <a
-                  href="http://localhost:8080/pages/concept-with-navigation.html"
+                  href="https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 sm:p-5 rounded-2xl bg-[#122822] border-2 border-[#F2C675] hover:bg-[#183E34] transition-all group block space-y-1.5 shadow-lg relative overflow-hidden"
+                >
+                  <div className="flex items-center justify-between text-[#F2C675]">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                      <span className="font-bold text-sm text-white">Live Cloud MVP</span>
+                    </div>
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                  <p className="text-xs text-[#D9DFD6]">
+                    Savanna course module on Cloud Run with live assistant &amp; audio.
+                  </p>
+                  <span className="inline-block text-[10px] font-mono font-bold text-[#F2C675] bg-[#091713] px-2 py-0.5 rounded border border-[#245246] mt-1">
+                    Direct Judge Demo ↗
+                  </span>
+                </a>
+
+                {/* GitHub Repository Card */}
+                <a
+                  href="https://github.com/habibi-code/Savanna-static-pages/tree/ermi"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 sm:p-5 rounded-2xl bg-[#0F2822] border border-[#245246] hover:border-[#F2C675] transition-all group block space-y-1.5"
                 >
                   <div className="flex items-center justify-between text-[#F2C675]">
-                    <span className="font-bold text-sm">Savanna Course Host</span>
+                    <div className="flex items-center gap-1.5">
+                      <Github className="w-4 h-4 text-[#F2C675]" />
+                      <span className="font-bold text-sm text-white">GitHub (ermi)</span>
+                    </div>
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                   <p className="text-xs text-[#A2B5AD]">
-                    Live course module with Inklu assistant and accessibility toolbar.
+                    Submitted source: FastAPI, BM25 retrieval, Docker &amp; widget.
                   </p>
+                  <span className="inline-block text-[10px] font-mono text-[#A2B5AD] bg-[#091713] px-2 py-0.5 rounded border border-[#183E34] mt-1">
+                    branch: ermi
+                  </span>
                 </a>
 
+                {/* OpenAPI Docs Card */}
                 <a
-                  href="http://localhost:8080/operator/index.html"
+                  href="https://savanna-assistant-303345096403.us-central1.run.app/docs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 sm:p-5 rounded-2xl bg-[#0F2822] border border-[#245246] hover:border-[#F2C675] transition-all group block space-y-1.5"
                 >
                   <div className="flex items-center justify-between text-[#F2C675]">
-                    <span className="font-bold text-sm">Operator Live Help</span>
+                    <span className="font-bold text-sm text-white">OpenAPI 3.0 Specs</span>
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                  <p className="text-xs text-[#A2B5AD]">
+                    Swagger interactive docs for all 18 endpoints across chat &amp; LTI.
+                  </p>
+                  <span className="inline-block text-[10px] font-mono text-[#A2B5AD] bg-[#091713] px-2 py-0.5 rounded border border-[#183E34] mt-1">
+                    /docs
+                  </span>
+                </a>
+
+                {/* Operator Desk Card */}
+                <a
+                  href="https://savanna-assistant-303345096403.us-central1.run.app/operator/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 sm:p-5 rounded-2xl bg-[#0F2822] border border-[#245246] hover:border-[#F2C675] transition-all group block space-y-1.5"
+                >
+                  <div className="flex items-center justify-between text-[#F2C675]">
+                    <span className="font-bold text-sm text-white">Operator Live Help</span>
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                   <p className="text-xs text-[#A2B5AD]">
                     Real-time ticket queue receiving learner context telemetry.
                   </p>
-                </a>
-
-                <a
-                  href="http://localhost:8000/docs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-4 sm:p-5 rounded-2xl bg-[#0F2822] border border-[#245246] hover:border-[#F2C675] transition-all group block space-y-1.5"
-                >
-                  <div className="flex items-center justify-between text-[#F2C675]">
-                    <span className="font-bold text-sm">OpenAPI 3.0 Specs</span>
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                  </div>
-                  <p className="text-xs text-[#A2B5AD]">
-                    Swagger documentation for all 18 endpoints across chat, speech &amp; LTI.
-                  </p>
+                  <span className="inline-block text-[10px] font-mono text-[#A2B5AD] bg-[#091713] px-2 py-0.5 rounded border border-[#183E34] mt-1">
+                    /operator
+                  </span>
                 </a>
               </div>
 
