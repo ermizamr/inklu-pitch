@@ -557,7 +557,7 @@ export default function PresentationMode({ isOpen, onClose }) {
 
               <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <span className="annotation text-gold block mb-1.5">The team — verified by commits</span>
+                  <span className="annotation text-gold block mb-1.5">The team</span>
                   <p className="text-sm text-paper/75 font-medium">
                     Ermyas Misiker (Lead) · Habib Seid (Repo Lead) · Eba Mengistu
                     Baisa (Channels) · Roba W. (Prompts)

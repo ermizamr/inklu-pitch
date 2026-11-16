@@ -542,8 +542,6 @@ export const TEAM_MEMBERS = [
     name: "Ermyas Misiker",
     github: "ermizamr",
     role: "Lead Developer & Accessibility Architect",
-    avatar: "EA",
-    commits: 73,
     contributions: [
       "Authored drop-in <db-assistant> widget, iframe sandbox, and DOM accessibility engine",
       "Built Level 2 Technical Guide REST API contract (/api/v1/ask, /api/v1/content, /api/v1/escalations, /sms/inbound)",
@@ -556,8 +554,6 @@ export const TEAM_MEMBERS = [
     name: "Habib Seid",
     github: "habibi-code",
     role: "Repository Lead & Full-Stack Engineer",
-    avatar: "HS",
-    commits: 24,
     contributions: [
       "Repository architecture, branch coordination, and ALX Savanna platform integration",
       "Curriculum static page harvesting and concept navigation templates",
@@ -568,8 +564,6 @@ export const TEAM_MEMBERS = [
     name: "Eba Mengistu Baisa",
     github: "EbaMengistu1",
     role: "Channels & Bot Integration Engineer",
-    avatar: "EM",
-    commits: 4,
     contributions: [
       "Telegram bot long-polling integration for operator notification channel",
       "Low-bandwidth SMS webhook routing and 160-character formatting",
@@ -580,8 +574,6 @@ export const TEAM_MEMBERS = [
     name: "Roba W.",
     github: "robaw1",
     role: "AI Tutor & Multilingual Prompt Engineer",
-    avatar: "RW",
-    commits: 1,
     contributions: [
       "Course-grounded AI tutor system prompts and pedagogical guidelines",
       "Multilingual translation dictionary verification for Afaan Oromoo and Amharic",

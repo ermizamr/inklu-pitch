@@ -16,5 +16,12 @@
     <style>html{background:#F7F6F0}</style>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- ══════════════════════════════════════════════════════════════
+         Inklu runs on this page itself — the product, dogfooded.
+         This is the entire Level-1 integration: one script tag and one
+         custom element, zero host changes. Same widget as the live MVP.
+    ═══════════════════════════════════════════════════════════════ -->
+    <script src="https://savanna-assistant-303345096403.us-central1.run.app/widget/widget.js?v=2.8.3" data-lang="en" defer></script>
+    <db-assistant lang="en" content="https://savanna-assistant-303345096403.us-central1.run.app/content.json"></db-assistant>
   </body>
 </html>

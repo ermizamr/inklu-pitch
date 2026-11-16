@@ -269,6 +269,14 @@
 
 /* ---------------- Reduced motion: stillness with dignity ---------------- */
 
+/* When a host overlay (pitch deck, modals) is open, Inklu's own
+   floating chrome steps aside — the host page is in control. */
+body.overlay-open #savanna-trigger,
+body.overlay-open #savanna-a11y-trigger,
+body.overlay-open .sa11y-backdrop {
+  display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;

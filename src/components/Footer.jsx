@@ -22,6 +22,13 @@ export default function Footer({ onOpenPresentation, onOpenLicenses }) {
               Hackathon 2026. Built to be judged — every claim on this page
               links to code, evidence, or a live endpoint.
             </p>
+            <p className="mt-4 border-l-2 border-gold pl-4 text-sm leading-relaxed text-body max-w-sm">
+              <span className="font-semibold text-ink">
+                This page runs Inklu itself.
+              </span>{" "}
+              The assistant button in the corner is the real 14.2 KB widget —
+              embedded with one script tag, zero changes to this site.
+            </p>
           </div>
 
           <div className="md:col-span-3">

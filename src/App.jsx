@@ -49,6 +49,12 @@ export default function App() {
   const anyOverlayOpen =
     presentationOpen || licensesOpen || Boolean(selectedImage);
 
+  // Inklu's widget chrome steps aside while a host overlay is open.
+  useEffect(() => {
+    document.body.classList.toggle("overlay-open", anyOverlayOpen);
+    return () => document.body.classList.remove("overlay-open");
+  }, [anyOverlayOpen]);
+
   return (
     <div className="min-h-screen bg-paper text-body font-body flex flex-col">
       {/* Skip to Main Content (WCAG 2.2 AA SC 2.4.1) */}

@@ -1,7 +1,6 @@
 /**
  * ACT 05 — THE PEOPLE
- * A team ledger verified by commit history, the honest roadmap,
- * and the manifesto close on dark paper.
+ * A team ledger, the honest roadmap, and the manifesto close on dark paper.
  */
 import { TEAM_MEMBERS } from "../data/contentData";
 import { Reveal, ChapterMark, Stamp, KbdChip } from "./ui/primitives";
@@ -28,13 +27,13 @@ export default function TeamVision({ onOpenPresentation }) {
         <ChapterMark
           numeral="05"
           act="Act 05 — The People"
-          title="Four people, verified by their commits."
+          title="Four people, one mission."
         />
 
         <Reveal className="mt-6 max-w-2xl text-base leading-relaxed text-body">
-          Every member below is a confirmed contributor in the submitted
-          repository's git history. No invented credentials, no inflated claims —
-          the same honesty the product applies to its capability taxonomy.
+          Every member below is a confirmed contributor on the submitted
+          repository. No invented credentials, no inflated claims — the same
+          honesty the product applies to its capability taxonomy.
         </Reveal>
 
         {/* Team ledger */}
@@ -42,7 +41,7 @@ export default function TeamVision({ onOpenPresentation }) {
           {TEAM_MEMBERS.map((m, i) => (
             <Reveal key={m.github} delay={i * 60}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 py-8 border-b border-rule">
-                <div className="lg:col-span-4 flex items-baseline gap-4">
+                <div className="lg:col-span-5 flex items-baseline gap-4">
                   <span className="font-mono text-[11px] text-muted tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -63,10 +62,6 @@ export default function TeamVision({ onOpenPresentation }) {
                 <div className="lg:col-span-3">
                   <span className="annotation text-muted block mb-1.5">Role</span>
                   <span className="text-sm text-body">{m.role}</span>
-                </div>
-                <div className="lg:col-span-1">
-                  <span className="annotation text-muted block mb-1.5">Commits</span>
-                  <span className="font-display text-xl text-ink tabular-nums">{m.commits}</span>
                 </div>
                 <div className="lg:col-span-4">
                   <span className="annotation text-muted block mb-1.5">Filed contributions</span>

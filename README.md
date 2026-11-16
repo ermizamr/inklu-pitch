@@ -4,7 +4,8 @@
 > **🚀 Live Cloud Run MVP Demo:** [`https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html`](https://savanna-assistant-303345096403.us-central1.run.app/pages/concept-with-navigation.html)  
 > **Source of Truth Repository:** [`https://github.com/habibi-code/Savanna-static-pages`](https://github.com/habibi-code/Savanna-static-pages)  
 > **Submitted Branch:** [`ermi`](https://github.com/habibi-code/Savanna-static-pages/tree/ermi)  
-> **Standard:** WCAG 2.2 Level AA Evaluated (27/27 axe-core automated rules passing, 0 violations)
+> **Standard:** WCAG 2.2 Level AA Evaluated (27/27 axe-core automated rules passing, 0 violations)  
+> **🐕 This site runs Inklu itself** — the floating assistant is the real 14.2 KB `<db-assistant>` widget, embedded with one script tag and zero host changes (the same Level-1 integration documented in Act 02).
 
 ---
 
@@ -132,7 +133,7 @@ When running Ermi's Docker Compose stack from the submitted repository:
 
 All team members are verified contributors from the git repository commit history:
 
-- **Ermyas Misiker (`@ermizamr`)** — Lead Developer & Accessibility Architect (73 commits)
+- **Ermyas Misiker (`@ermizamr`)** — Lead Developer & Accessibility Architect
 - **Habib Seid (`@habibi-code`)** — Repository Lead & Full-Stack Engineer (24 commits)
 - **Eba Mengistu Baisa (`@EbaMengistu1`)** — Channels & Bot Integration Engineer (4 commits)
 - **Roba W. (`@robaw1`)** — AI Tutor Prompt Engineer & Multilingual Localization (1 commit)
