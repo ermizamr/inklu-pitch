@@ -1,183 +1,129 @@
-import { TEAM_MEMBERS, BRAND } from "../data/contentData";
-import { 
-  GitCommit, 
-  Quote, 
-  ArrowRight, 
-  Compass, 
-  CheckCircle2
-} from "lucide-react";
+/**
+ * ACT 05 — THE PEOPLE
+ * A team ledger verified by commit history, the honest roadmap,
+ * and the manifesto close on dark paper.
+ */
+import { TEAM_MEMBERS } from "../data/contentData";
+import { Reveal, ChapterMark, Stamp, KbdChip } from "./ui/primitives";
 
-const Github = ({ className = "w-3.5 h-3.5" }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-    <path d="M9 18c-4.51 2-5-2-7-2" />
-  </svg>
-);
+const ROADMAP = [
+  {
+    title: "Multi-party WebRTC session archiving",
+    detail: "Consent-driven recording of live tutor sessions for audits and operator training.",
+  },
+  {
+    title: "USSD shortcode access — *804#",
+    detail: "Course deadlines and grading thresholds on basic 2G feature phones, no internet required.",
+  },
+  {
+    title: "Bi-directional gradebook sync",
+    detail: "Grade reporting into Canvas and Moodle via LTI 1.3 Assignment and Grade Services.",
+  },
+];
 
 export default function TeamVision({ onOpenPresentation }) {
-  const roadmapItems = [
-    {
-      title: "Multi-Party WebRTC Video Archiving",
-      status: "Roadmap Horizon",
-      description: "Secure, consent-driven video and audio archiving of live human tutor sessions for asynchronous accessibility audits and operator training.",
-    },
-    {
-      title: "Direct USSD Shortcode Access (*804#)",
-      status: "Roadmap Horizon",
-      description: "Allowing learners in rural or non-data regions across Ethiopia to query course deadlines and grading thresholds using basic 2G feature phones without internet.",
-    },
-    {
-      title: "Automated Bi-Directional Gradebook Sync",
-      status: "Roadmap Horizon",
-      description: "Seamless grade reporting back to Canvas and Moodle gradebooks via LTI 1.3 Assignment and Grade Services (AGS).",
-    },
-  ];
-
   return (
-    <section id="team" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-[#D9DFD6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16 text-left space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183E34]/10 text-[#183E34] text-xs font-semibold tracking-wider uppercase">
-            <span>07 • Team &amp; Long-Term Vision</span>
-          </div>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#18362E] tracking-tight leading-tight">
-            The team behind Inklu, and the future of dignified learning.
-          </h2>
-          <p className="text-base sm:text-lg text-[#334D44] leading-relaxed">
-            All team members below are confirmed contributors from the submitted repository git commit history. We do not invent credentials or inflate claims.
-          </p>
-        </div>
+    <section id="people" aria-label="The people" className="border-t border-rule">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
+        <ChapterMark
+          numeral="05"
+          act="Act 05 — The People"
+          title="Four people, verified by their commits."
+        />
 
-        {/* Confirmed Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {TEAM_MEMBERS.map((member, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-2xl bg-[#F8F9F4] border border-[#D9DFD6] hover:border-[#183E34] transition-all shadow-xs flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-xl bg-[#183E34] text-[#F2C675] font-heading font-extrabold text-lg flex items-center justify-center border border-[#245246] shadow-xs">
-                    {member.avatar}
-                  </div>
-                  <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-[#D9DFD6] text-[11px] font-mono text-[#4B635B]">
-                    <GitCommit className="w-3 h-3 text-[#183E34]" />
-                    <span>{member.commits} commits</span>
-                  </div>
-                </div>
+        <Reveal className="mt-6 max-w-2xl text-base leading-relaxed text-body">
+          Every member below is a confirmed contributor in the submitted
+          repository's git history. No invented credentials, no inflated claims —
+          the same honesty the product applies to its capability taxonomy.
+        </Reveal>
 
-                <div>
-                  <h3 className="font-heading font-bold text-lg text-[#18362E]">
-                    {member.name}
-                  </h3>
-                  <a
-                    href={`https://github.com/${member.github}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-[#D4A54B] hover:underline font-mono inline-flex items-center gap-1 mt-0.5"
-                  >
-                    @{member.github} <Github className="w-2.5 h-2.5" />
-                  </a>
-                  <p className="text-xs text-[#183E34] font-semibold mt-1">
-                    {member.role}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-[#D9DFD6]/70 space-y-1.5">
-                  <span className="text-[10px] uppercase font-bold text-[#4B635B] tracking-wider block">
-                    Verified Repo Contributions
+        {/* Team ledger */}
+        <div className="mt-14 border-t border-rule">
+          {TEAM_MEMBERS.map((m, i) => (
+            <Reveal key={m.github} delay={i * 60}>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 py-8 border-b border-rule">
+                <div className="lg:col-span-4 flex items-baseline gap-4">
+                  <span className="font-mono text-[11px] text-muted tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <ul className="space-y-1">
-                    {member.contributions.slice(0, 3).map((c, i) => (
-                      <li key={i} className="text-[11px] text-[#334D44] flex items-start gap-1.5 leading-snug">
-                        <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{c}</span>
+                  <div>
+                    <h3 className="font-display text-2xl font-medium text-ink leading-tight">
+                      {m.name}
+                    </h3>
+                    <a
+                      href={`https://github.com/${m.github}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs text-forest hover:underline"
+                    >
+                      @{m.github}
+                    </a>
+                  </div>
+                </div>
+                <div className="lg:col-span-3">
+                  <span className="annotation text-muted block mb-1.5">Role</span>
+                  <span className="text-sm text-body">{m.role}</span>
+                </div>
+                <div className="lg:col-span-1">
+                  <span className="annotation text-muted block mb-1.5">Commits</span>
+                  <span className="font-display text-xl text-ink tabular-nums">{m.commits}</span>
+                </div>
+                <div className="lg:col-span-4">
+                  <span className="annotation text-muted block mb-1.5">Filed contributions</span>
+                  <ul className="space-y-1.5">
+                    {m.contributions.slice(0, 3).map((c) => (
+                      <li key={c} className="text-xs leading-relaxed text-muted flex gap-2">
+                        <span aria-hidden="true" className="text-gold-deep">·</span>
+                        {c}
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
-
-              <div className="mt-6 pt-3 border-t border-[#D9DFD6]/60 text-[11px] text-[#4B635B] font-mono">
-                Track 3 Contributor
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        {/* Vision Statement Banner */}
-        <div className="mb-20 p-8 sm:p-12 rounded-3xl bg-[#183E34] text-white border border-[#245246] shadow-xl relative overflow-hidden">
-          <div className="relative z-10 max-w-3xl space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F2C675]/20 text-[#F2C675] border border-[#F2C675]/30 text-xs font-semibold uppercase tracking-wider">
-              <Quote className="w-3 h-3" /> Foundational Mandate
-            </span>
-
-            <blockquote className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F8F9F4] leading-snug">
-              “Learning should adapt to people—not require people to overcome barriers to access it.”
-            </blockquote>
-
-            <p className="text-sm sm:text-base text-[#D9DFD6] leading-relaxed pt-2">
-              Whether a student is a non-English speaker in rural Oromia, a visually impaired programmer in Addis Ababa using NVDA, or a working adult relying on low-bandwidth 3G, education must meet them where they stand.
-            </p>
-
-            <div className="pt-4 flex flex-wrap items-center gap-4">
-              <button
-                type="button"
-                onClick={onOpenPresentation}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#F2C675] text-[#183E34] font-bold text-xs hover:bg-[#E5B860] transition-colors"
-              >
-                <span>Review Hackathon Pitch Deck</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-              <a
-                href={BRAND.branchUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-white hover:underline font-semibold"
-              >
-                <span>View Submitted Code on GitHub</span>
-                <Github className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Clear Separation: Finished MVP vs. Future Roadmap */}
-        <div>
-          <div className="max-w-2xl mb-6">
-            <h3 className="font-heading font-bold text-2xl text-[#18362E]">
-              Separating Current Submission from Future Roadmap
-            </h3>
-            <p className="text-xs text-[#4B635B] mt-1">
-              We strictly delineate the verified submitted deliverables from the planned post-hackathon horizon:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {roadmapItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-xl bg-[#F8F9F4] border border-[#D9DFD6] space-y-2"
-              >
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">
-                    {item.status}
-                  </span>
-                  <Compass className="w-4 h-4 text-purple-600" />
-                </div>
-                <h4 className="font-heading font-bold text-base text-[#18362E]">
-                  {item.title}
+        {/* Roadmap horizon */}
+        <Reveal className="mt-16">
+          <span className="annotation text-gold-deep">Horizon — what comes next</span>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {ROADMAP.map((r) => (
+              <div key={r.title} className="border-t border-rule pt-5">
+                <span aria-hidden="true" className="font-mono text-gold-deep">○</span>
+                <h4 className="font-display text-lg font-medium text-ink mt-2 leading-snug">
+                  {r.title}
                 </h4>
-                <p className="text-xs text-[#334D44] leading-relaxed">
-                  {item.description}
-                </p>
+                <p className="text-sm text-muted leading-relaxed mt-2">{r.detail}</p>
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
+      </div>
 
+      {/* Manifesto close */}
+      <div className="bg-ink text-paper">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-28 lg:py-36 text-center">
+          <Reveal>
+            <p className="font-ethiopic text-gold text-lg sm:text-xl" lang="am">
+              ትምህርቱ ሰዎችን ይስማማ — ሰዎች እንቅፋቶችን እንዲያልፉ አይጠይቅም።
+            </p>
+            <p className="font-display font-medium text-4xl sm:text-6xl lg:text-7xl leading-[1.1] tracking-tight max-w-5xl mx-auto mt-6">
+              Learning should adapt to people — <em className="italic font-light">not require people to overcome barriers to access it.</em>
+            </p>
+          </Reveal>
+          <Reveal delay={150} className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            <button
+              type="button"
+              onClick={onOpenPresentation}
+              className="inline-flex items-center gap-3 bg-gold text-ink font-semibold text-sm px-7 py-4 rounded-md hover:bg-paper transition-colors cursor-pointer"
+            >
+              Open the pitch deck
+              <KbdChip keys={["P"]} dark />
+            </button>
+            <Stamp tone="paper">ህዳር 2018 · November 2026 · Addis Ababa</Stamp>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

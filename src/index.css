@@ -1,45 +1,237 @@
 @import "tailwindcss";
 
-@theme {
-  --color-forest: #183E34;
-  --color-forest-dark: #0F2822;
-  --color-forest-light: #225145;
-  --color-cream: #F8F9F4;
-  --color-cream-surface: #FFFFFF;
-  --color-cream-muted: #F0F3EC;
-  --color-gold: #F2C675;
-  --color-gold-dark: #D4A54B;
-  --color-dark-ink: #18362E;
-  --color-ink-muted: #4B635B;
-  --color-border-subtle: #D9DFD6;
-  --color-border-forest: #2B574A;
+/* ------------------------------------------------------------------
+   INKLU — Design Language: "The Barrier Is the Design"
+   Editorial system: Fraunces display / DM Sans body / Noto Sans Ethiopic
+   / IBM Plex Mono annotations. Hairline rules act as thresholds; reveals
+   break through them. Reduced motion is a first-class state.
+------------------------------------------------------------------- */
 
-  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-ethiopic: 'Noto Sans Ethiopic', 'DM Sans', sans-serif;
+@theme {
+  /* Paper (light chapters) */
+  --color-paper: #F7F6F0;
+  --color-paper-raised: #FFFFFF;
+  --color-paper-dim: #EFEEE5;
+  --color-rule: #D8D6C9;
+
+  /* Ink (dark act breaks) */
+  --color-ink: #14251F;
+  --color-ink-raised: #1B332A;
+  --color-ink-soft: #24423A;
+  --color-ink-rule: #2E5148;
+
+  /* Voice (accents) */
+  --color-forest: #183E34;
+  --color-forest-bright: #2E6B54;
+  --color-gold: #F2C675;
+  --color-gold-deep: #C99A45;
+  --color-body: #2C3E37;
+  --color-muted: #5C6E64;
+
+  /* Language */
+  --font-display: "Fraunces", "Noto Sans Ethiopic", Georgia, serif;
+  --font-body: "DM Sans", "Noto Sans Ethiopic", -apple-system, sans-serif;
+  --font-ethiopic: "Noto Sans Ethiopic", "DM Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
 }
 
 :root {
   font-family: var(--font-body);
-  color: var(--color-dark-ink);
-  background-color: var(--color-cream);
+  color: var(--color-body);
+  background-color: var(--color-paper);
   color-scheme: light;
+  --spine-x: 0%;
 }
 
-/* Custom font utilities */
-.font-heading {
-  font-family: var(--font-heading);
+::selection {
+  background: color-mix(in srgb, var(--color-gold) 45%, transparent);
+  color: var(--color-forest);
 }
 
-.font-body {
-  font-family: var(--font-body);
+/* ---------------- Typography primitives ---------------- */
+
+.font-display { font-family: var(--font-display); font-optical-sizing: auto; }
+.font-body    { font-family: var(--font-body); }
+.font-ethiopic{ font-family: var(--font-ethiopic); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* Small-caps mono annotation — the "record keeping" voice of the site */
+.annotation {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-.font-ethiopic {
-  font-family: var(--font-ethiopic);
+/* ---------------- The threshold (hairline rule) ---------------- */
+
+.rule-h { border-top: 1px solid var(--color-rule); }
+.rule-strong { border-top: 2px solid var(--color-forest); }
+
+/* ---------------- Keyboard caps: the product is keyboard-first,
+   so keyboard keys belong to the visual language ---------------- */
+
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.55rem;
+  height: 1.55rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--color-ink-rule);
+  border-bottom-width: 2px;
+  border-radius: 0.375rem;
+  background: var(--color-ink-raised);
+  color: var(--color-gold);
+}
+.kbd-light {
+  border-color: var(--color-rule);
+  border-bottom-width: 2px;
+  background: var(--color-paper-raised);
+  color: var(--color-forest);
 }
 
-/* Pitch Mode robust slide layout */
+/* ---------------- Verification stamp ---------------- */
+
+.stamp {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.3rem 0.55rem;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ---------------- Scroll reveals: breaking through the rule ---------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Editorial headline: lines rise from behind a mask */
+.line-mask { overflow: hidden; display: block; }
+.line-mask > span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.is-in .line-mask > span,
+.line-mask.is-in > span { transform: translateY(0); }
+
+/* ---------------- The spine (chapter rail) ---------------- */
+
+.spine-track {
+  position: fixed;
+  left: 1.25rem;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 30;
+  display: none;
+}
+@media (min-width: 1280px) { .spine-track { display: flex; } }
+
+.spine-line {
+  width: 1px;
+  height: 34vh;
+  background: var(--color-rule);
+  position: relative;
+}
+.spine-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--spine-x);
+  background: var(--color-forest);
+  transition: height 0.15s linear;
+}
+
+.spine-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-forest);
+  background: transparent;
+  transition: background 0.25s, scale 0.25s;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: var(--dot-y);
+}
+.spine-dot[aria-current="true"] {
+  background: var(--color-forest);
+  scale: 1.35;
+}
+
+/* ---------------- Language crossfade (hero) ---------------- */
+
+.lang-swap {
+  display: inline-grid;
+  vertical-align: bottom;
+}
+.lang-swap > span {
+  grid-area: 1 / 1;
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lang-swap > span[data-active="false"] {
+  opacity: 0;
+  transform: translateY(0.35em);
+  pointer-events: none;
+  user-select: none;
+}
+.lang-swap > span[data-active="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------- Marquee (language ribbon) ---------------- */
+
+@keyframes ribbon {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ribbon-track {
+  display: flex;
+  width: max-content;
+  animation: ribbon 36s linear infinite;
+}
+.ribbon:hover .ribbon-track { animation-play-state: paused; }
+
+/* ---------------- Focus: gold ring as a design feature ---------------- */
+
+:focus-visible {
+  outline: 3px solid var(--color-gold-deep);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.focus-dark:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* ---------------- Pitch Mode slide shell (kept from v1) ---------------- */
+
 .pitch-shell {
   height: 100dvh;
   max-height: 100dvh;
@@ -47,44 +239,23 @@
   grid-template-rows: auto minmax(0, 1fr) auto;
   overflow: hidden;
 }
-
 .pitch-main {
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
 }
-
-.pitch-scroll::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.pitch-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+.pitch-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+.pitch-scroll::-webkit-scrollbar-track { background: transparent; }
 .pitch-scroll::-webkit-scrollbar-thumb {
   background: rgba(242, 198, 117, 0.25);
   border-radius: 9999px;
 }
-
 .pitch-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(242, 198, 117, 0.5);
 }
 
-/* Accessible focus styling */
-:focus-visible {
-  outline: 3px solid #183E34;
-  outline-offset: 3px;
-  border-radius: 4px;
-}
+/* ---------------- Reduced motion: stillness with dignity ---------------- */
 
-.dark-focus:focus-visible {
-  outline: 3px solid #F2C675;
-  outline-offset: 3px;
-}
-
-/* Accessibility reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
@@ -92,23 +263,19 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .reveal, .line-mask > span {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
-/* Subtle custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+/* ---------------- Scrollbar ---------------- */
 
-::-webkit-scrollbar-track {
-  background: #F0F3EC;
-}
-
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-paper-dim); }
 ::-webkit-scrollbar-thumb {
-  background: #C4CEC0;
-  border-radius: 4px;
+  background: #B9B8A6;
+  border-radius: 6px;
+  border: 2px solid var(--color-paper-dim);
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: #9DB099;
-}
+::-webkit-scrollbar-thumb:hover { background: #93927F; }

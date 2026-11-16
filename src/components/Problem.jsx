@@ -1,153 +1,137 @@
+/**
+ * ACT 01 — THE WALL
+ * Three barriers, told as chapters with pull-quotes. Ends in a dark
+ * act-break: the ledger of what fails vs. what Inklu does instead.
+ */
 import { PROBLEM_PILLARS } from "../data/contentData";
-import { Languages, EyeOff, LogOut, Quote, AlertTriangle, CheckCircle } from "lucide-react";
+import { Reveal, ChapterMark, Stamp } from "./ui/primitives";
 
 export default function Problem() {
-  const getIcon = (id) => {
-    switch (id) {
-      case "language":
-        return <Languages className="w-6 h-6 text-[#183E34]" />;
-      case "visual-cognitive":
-        return <EyeOff className="w-6 h-6 text-[#183E34]" />;
-      case "friction":
-        return <LogOut className="w-6 h-6 text-[#183E34]" />;
-      default:
-        return <AlertTriangle className="w-6 h-6 text-[#183E34]" />;
-    }
-  };
-
   return (
-    <section id="problem" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-[#D9DFD6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16 text-left space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183E34]/10 text-[#183E34] text-xs font-semibold tracking-wider uppercase">
-            <span>01 • The Problem</span>
-          </div>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#18362E] tracking-tight leading-tight">
-            The hidden tax on potential: why online learning fails when it ignores human difference.
-          </h2>
-          <p className="text-base sm:text-lg text-[#334D44] leading-relaxed">
-            When learners struggle on an educational platform, platforms usually assume the student lacked aptitude.
-            The reality is far simpler: the platform imposed linguistic, sensory, and cognitive hurdles that made
-            comprehension unnecessarily arduous.
-          </p>
-        </div>
+    <section id="wall" aria-label="The wall — the problem">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-24 lg:py-32">
+        <ChapterMark
+          numeral="01"
+          act="Act 01 — The Wall"
+          title="Three walls stand between a learner and the lesson."
+        />
 
-        {/* Narrative Storytelling Sequence (3 Sequential Chapters) */}
-        <div className="space-y-12">
-          {PROBLEM_PILLARS.map((pillar, idx) => (
-            <div
-              key={pillar.id}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start p-8 rounded-2xl bg-[#F8F9F4] border border-[#D9DFD6] hover:border-[#183E34]/40 transition-colors"
-            >
-              {/* Left Pillar Indicator */}
-              <div className="lg:col-span-4 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#D9DFD6] flex items-center justify-center shadow-xs">
-                    {getIcon(pillar.id)}
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono font-bold text-[#D4A54B] tracking-widest uppercase">
-                      Chapter 0{idx + 1}
+        <div className="mt-20 space-y-24 lg:space-y-32">
+          {PROBLEM_PILLARS.map((pillar, idx) => {
+            const flip = idx % 2 === 1;
+            return (
+              <article
+                key={pillar.id}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14"
+              >
+                {/* Chapter numeral in the margin */}
+                <div className={`lg:col-span-2 ${flip ? "lg:order-2" : ""}`}>
+                  <Reveal className="lg:sticky lg:top-28 flex lg:flex-col items-baseline lg:items-start gap-4">
+                    <span className="font-display text-7xl lg:text-8xl font-light text-rule leading-none tabular-nums select-none">
+                      {String(idx + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="font-heading font-bold text-xl text-[#18362E] leading-snug">
+                    <span className="annotation text-gold-deep">
+                      {pillar.category}
+                    </span>
+                  </Reveal>
+                </div>
+
+                {/* Chapter body */}
+                <div className={`lg:col-span-6 ${flip ? "lg:order-1" : ""}`}>
+                  <Reveal>
+                    <h3 className="font-display text-3xl sm:text-4xl font-medium text-ink leading-tight tracking-tight">
                       {pillar.title}
                     </h3>
-                  </div>
+                    <p className="mt-6 text-lg leading-relaxed text-body max-w-xl">
+                      {pillar.description}
+                    </p>
+                  </Reveal>
+                  <Reveal delay={120}>
+                    <p className="mt-6 border-l-2 border-gold pl-5 text-sm leading-relaxed text-muted max-w-xl">
+                      <span className="annotation text-forest block mb-1.5">
+                        Observed impact
+                      </span>
+                      {pillar.impact}
+                    </p>
+                  </Reveal>
                 </div>
 
-                <div className="inline-block px-2.5 py-1 rounded bg-[#EAEFE8] text-[#183E34] text-xs font-semibold">
-                  {pillar.category}
+                {/* Pull quote — the chapter's voice */}
+                <div className={`lg:col-span-4 ${flip ? "lg:order-3" : ""}`}>
+                  <Reveal delay={180} className="lg:pt-14">
+                    <blockquote className="relative pt-8">
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-0 left-0 font-display text-7xl leading-none text-gold select-none"
+                      >
+                        “
+                      </span>
+                      <p className="font-display italic text-xl sm:text-2xl leading-snug text-forest">
+                        {pillar.quote}
+                      </p>
+                    </blockquote>
+                  </Reveal>
                 </div>
-
-                <div className="p-4 rounded-xl bg-white border border-[#D9DFD6] text-xs text-[#334D44] leading-relaxed italic">
-                  <Quote className="w-4 h-4 text-[#D4A54B] mb-1.5 inline mr-1" />
-                  {pillar.quote}
-                </div>
-              </div>
-
-              {/* Right Pillar Narrative Body */}
-              <div className="lg:col-span-8 space-y-4 text-left">
-                <p className="text-base sm:text-lg text-[#18362E] leading-relaxed font-normal">
-                  {pillar.description}
-                </p>
-
-                <div className="p-4 rounded-xl bg-[#FFFFFF] border-l-4 border-l-[#183E34] border-[#D9DFD6] space-y-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#183E34] block">
-                    Observed Practical Impact
-                  </span>
-                  <p className="text-sm text-[#334D44] font-medium leading-relaxed">
-                    {pillar.impact}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
+      </div>
 
-        {/* The Reality Comparison Grid */}
-        <div className="mt-16 p-8 rounded-2xl bg-[#18362E] text-[#F8F9F4] border border-[#245246] shadow-lg">
-          <div className="max-w-3xl mb-8">
-            <span className="text-[#F2C675] font-mono text-xs uppercase tracking-widest font-semibold block mb-1">
-              Architectural Imperative
+      {/* ---- Act break: the ledger ---- */}
+      <div className="bg-ink text-paper">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 lg:py-28">
+          <Reveal className="flex flex-wrap items-baseline justify-between gap-4">
+            <span className="annotation text-gold">
+              Interlude — Why band-aids fail
             </span>
-            <h3 className="font-heading font-bold text-2xl sm:text-3xl tracking-tight text-white">
-              Why traditional band-aids fail: Cosmetic Accessibility vs. Grounded Pedagogical Companion
+            <Stamp tone="paper">The honest comparison</Stamp>
+          </Reveal>
+
+          <Reveal>
+            <h3 className="font-display text-3xl sm:text-5xl font-medium leading-tight tracking-tight max-w-3xl mt-8">
+              Cosmetic overlays <em className="italic font-light">tweak</em> a page.
+              Inklu <em className="italic font-light">translates</em> the lesson.
             </h3>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-            <div className="p-6 rounded-xl bg-[#122822] border border-[#245246] space-y-3">
-              <div className="flex items-center gap-2 text-red-300 font-bold uppercase tracking-wide text-xs">
-                <AlertTriangle className="w-4 h-4" /> Traditional Overlays &amp; External AI
-              </div>
-              <ul className="space-y-2.5 text-[#D9DFD6] text-xs sm:text-sm">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 font-bold">✕</span>
-                  <span>Superficial visual tweaks (font enlargement) that ignore comprehension and language barriers.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 font-bold">✕</span>
-                  <span>External consumer LLMs generate ungrounded answers with zero awareness of course syllabus or rubric.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 font-bold">✕</span>
-                  <span>Requires learners to leave the LMS, breaking study momentum and isolating student progress.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-400 font-bold">✕</span>
-                  <span>Demands invasive medical proof or disability disclosure for basic accommodations.</span>
-                </li>
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 border-t border-ink-rule">
+            <Reveal className="py-10 md:pr-14 md:border-r border-ink-rule">
+              <span className="annotation text-paper/50">
+                Traditional overlays & external AI
+              </span>
+              <ul className="mt-6 space-y-5">
+                {[
+                  "Font-size tweaks that ignore language and comprehension entirely.",
+                  "Consumer chatbots that hallucinate — no access to the real syllabus.",
+                  "Help lives outside the LMS: context lost, flow broken.",
+                  "Accommodations gated behind medical proof.",
+                ].map((t) => (
+                  <li key={t} className="flex gap-4 text-sm leading-relaxed text-paper/75">
+                    <span aria-hidden="true" className="font-display text-paper/35 leading-none mt-0.5">✕</span>
+                    {t}
+                  </li>
+                ))}
               </ul>
-            </div>
-
-            <div className="p-6 rounded-xl bg-[#1F4439] border border-[#F2C675]/30 space-y-3">
-              <div className="flex items-center gap-2 text-[#F2C675] font-bold uppercase tracking-wide text-xs">
-                <CheckCircle className="w-4 h-4" /> The Inklu Architecture
-              </div>
-              <ul className="space-y-2.5 text-[#F8F9F4] text-xs sm:text-sm">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#F2C675] font-bold">✓</span>
-                  <span>Drop-in 14.2 KB widget embedded directly into course pages with zero LMS code alterations.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#F2C675] font-bold">✓</span>
-                  <span>Course-grounded RAG retrieves verified syllabus sections with clickable deep link citations.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#F2C675] font-bold">✓</span>
-                  <span>In-situ dynamic DOM translation into Amharic, Oromo, and Tigrinya without leaving the tab.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#F2C675] font-bold">✓</span>
-                  <span>Dignified, no-barrier accommodations: zero medical history demanded or stored.</span>
-                </li>
+            </Reveal>
+            <Reveal delay={120} className="py-10 md:pl-14">
+              <span className="annotation text-gold">The Inklu architecture</span>
+              <ul className="mt-6 space-y-5">
+                {[
+                  "14.2 KB widget embedded in the course page itself — zero LMS changes.",
+                  "Course-grounded retrieval citing the exact syllabus section, with deep links.",
+                  "Live DOM translation into Amharic, Oromo, Tigrinya — without leaving the tab.",
+                  "Dignified by default: accommodations with zero medical history, ever.",
+                ].map((t) => (
+                  <li key={t} className="flex gap-4 text-sm leading-relaxed text-paper/90">
+                    <span aria-hidden="true" className="font-display text-gold leading-none mt-0.5">→</span>
+                    {t}
+                  </li>
+                ))}
               </ul>
-            </div>
+            </Reveal>
           </div>
         </div>
-
       </div>
     </section>
   );
