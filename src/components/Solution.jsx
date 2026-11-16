@@ -27,7 +27,7 @@ export default function Solution() {
               <Reveal className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-12 border-t border-rule group">
                 {/* Step number */}
                 <div className="lg:col-span-1">
-                  <span className="annotation text-gold-deep tabular-nums">
+                  <span className="annotation text-gold-ink tabular-nums">
                     {step.step}
                   </span>
                 </div>
@@ -52,7 +52,7 @@ export default function Solution() {
                       <span className="annotation text-gold">
                         {String(idx + 1).padStart(2, "0")} · {step.badge}
                       </span>
-                      <span className="font-mono text-[10px] text-paper/40">
+                      <span className="font-mono text-[10px] text-paper/60">
                         verified
                       </span>
                     </div>

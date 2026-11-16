@@ -46,6 +46,9 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleGlobalKeyDown);
   }, [presentationOpen, licensesOpen, selectedImage]);
 
+  const anyOverlayOpen =
+    presentationOpen || licensesOpen || Boolean(selectedImage);
+
   return (
     <div className="min-h-screen bg-paper text-body font-body flex flex-col">
       {/* Skip to Main Content (WCAG 2.2 AA SC 2.4.1) */}
@@ -58,35 +61,39 @@ export default function App() {
 
       <Spine />
 
-      <Navbar onOpenPresentation={() => setPresentationOpen(true)} />
+      {/* When an overlay is open, the page behind it becomes inert:
+          invisible to assistive tech, unclickable, unfocusable. */}
+      <div className="contents" inert={anyOverlayOpen || undefined}>
+        <Navbar onOpenPresentation={() => setPresentationOpen(true)} />
 
-      <main id="main-content" className="flex-1 focus:outline-none">
-        {/* Act 00 — The Promise */}
-        <Hero onOpenPresentation={() => setPresentationOpen(true)} />
+        <main id="main-content" className="flex-1 focus:outline-none">
+          {/* Act 00 — The Promise */}
+          <Hero onOpenPresentation={() => setPresentationOpen(true)} />
 
-        {/* Act 01 — The Wall */}
-        <Problem />
+          {/* Act 01 — The Wall */}
+          <Problem />
 
-        {/* Act 02 — The Bridge */}
-        <Solution />
+          {/* Act 02 — The Bridge */}
+          <Solution />
 
-        {/* Act 03 — The Evidence (plates + live simulator) */}
-        <ProductShowcase onSelectImage={setSelectedImage} />
-        <DemoSection />
+          {/* Act 03 — The Evidence (plates + live simulator) */}
+          <ProductShowcase onSelectImage={setSelectedImage} />
+          <DemoSection />
 
-        {/* Act 04 — The Proof (blueprint + certificate) */}
-        <Architecture />
-        <AccessibilityReport />
+          {/* Act 04 — The Proof (blueprint + certificate) */}
+          <Architecture />
+          <AccessibilityReport />
 
-        {/* Act 05 — The People */}
-        <TeamVision onOpenPresentation={() => setPresentationOpen(true)} />
-      </main>
+          {/* Act 05 — The People */}
+          <TeamVision onOpenPresentation={() => setPresentationOpen(true)} />
+        </main>
 
-      {/* Colophon */}
-      <Footer
-        onOpenPresentation={() => setPresentationOpen(true)}
-        onOpenLicenses={() => setLicensesOpen(true)}
-      />
+        {/* Colophon */}
+        <Footer
+          onOpenPresentation={() => setPresentationOpen(true)}
+          onOpenLicenses={() => setLicensesOpen(true)}
+        />
+      </div>
 
       <PresentationMode
         isOpen={presentationOpen}

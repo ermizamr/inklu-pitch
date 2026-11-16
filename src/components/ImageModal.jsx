@@ -52,8 +52,13 @@ export default function ImageModal({ image, onClose }) {
           </button>
         </div>
 
-        {/* The plate itself */}
-        <div className="overflow-auto p-4 sm:p-6 flex items-center justify-center bg-ink max-h-[75vh]">
+        {/* The plate itself — keyboard-accessible scroll region */}
+        <div
+          className="overflow-auto p-4 sm:p-6 flex items-center justify-center bg-ink max-h-[75vh]"
+          tabIndex={0}
+          role="region"
+          aria-label="Enlarged screenshot, scrollable"
+        >
           <img
             src={image.src}
             alt={image.alt || "High resolution screenshot of Inklu"}

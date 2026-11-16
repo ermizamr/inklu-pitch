@@ -86,7 +86,7 @@ export default function TeamVision({ onOpenPresentation }) {
 
         {/* Roadmap horizon */}
         <Reveal className="mt-16">
-          <span className="annotation text-gold-deep">Horizon — what comes next</span>
+          <span className="annotation text-gold-ink">Horizon — what comes next</span>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             {ROADMAP.map((r) => (
               <div key={r.title} className="border-t border-rule pt-5">

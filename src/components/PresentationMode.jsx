@@ -158,7 +158,7 @@ export default function PresentationMode({ isOpen, onClose }) {
           <span className="font-display text-xl text-paper leading-none shrink-0">
             Inklu<span className="text-gold">.</span>
           </span>
-          <span className="annotation text-paper/45 hidden sm:inline truncate">
+          <span className="annotation text-paper/60 hidden sm:inline truncate">
             Digital Bridge Hackathon · 2026 · Track 3
           </span>
         </div>
@@ -221,7 +221,11 @@ export default function PresentationMode({ isOpen, onClose }) {
       </header>
 
       {/* ── Slide canvas ─────────────────────────────────────────── */}
-      <main className="pitch-main pitch-scroll flex flex-col px-5 sm:px-10 lg:px-16 py-6 sm:py-8 w-full">
+      <main
+        className="pitch-main pitch-scroll flex flex-col px-5 sm:px-10 lg:px-16 py-6 sm:py-8 w-full"
+        tabIndex={0}
+        aria-label="Presentation slides"
+      >
         <div key={currentSlideIndex} className="slide-enter w-full max-w-6xl mx-auto my-auto">
 
           {/* ── SLIDE 1: VISION ─────────────────────────────────── */}
@@ -244,15 +248,15 @@ export default function PresentationMode({ isOpen, onClose }) {
                 </p>
                 <dl className="mt-8 flex gap-8 border-t border-ink-rule pt-5">
                   <div>
-                    <dt className="annotation text-paper/45">Languages</dt>
+                    <dt className="annotation text-paper/60">Languages</dt>
                     <dd className="font-display text-3xl text-paper mt-1">8</dd>
                   </div>
                   <div>
-                    <dt className="annotation text-paper/45">Widget</dt>
+                    <dt className="annotation text-paper/60">Widget</dt>
                     <dd className="font-display text-3xl text-paper mt-1">14.2 KB</dd>
                   </div>
                   <div>
-                    <dt className="annotation text-paper/45">axe-core</dt>
+                    <dt className="annotation text-paper/60">axe-core</dt>
                     <dd className="font-display text-3xl text-paper mt-1">27/27</dd>
                   </div>
                 </dl>
@@ -290,7 +294,7 @@ export default function PresentationMode({ isOpen, onClose }) {
                   ["The broken loop", "Leaving the LMS to translate on external apps shatters course context and hides cohort struggles from instructors."],
                 ].map(([t, d], i) => (
                   <li key={t} className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 py-5 border-b border-ink-rule">
-                    <span className="font-display text-4xl font-light text-ink-soft tabular-nums leading-none pt-0.5">
+                    <span className="font-display text-4xl font-light text-paper/40 tabular-nums leading-none pt-0.5">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>
@@ -334,7 +338,7 @@ export default function PresentationMode({ isOpen, onClose }) {
                     <li key={n} className="flex items-baseline gap-4 border-b border-ink-rule py-3">
                       <span className="text-gold font-semibold">{n}</span>
                       <span className="text-paper font-semibold">{t}</span>
-                      <span className="text-paper/45 ml-auto text-right">{d}</span>
+                      <span className="text-paper/60 ml-auto text-right">{d}</span>
                     </li>
                   ))}
                 </ol>
@@ -458,7 +462,7 @@ export default function PresentationMode({ isOpen, onClose }) {
                   <li key={n} className="grid grid-cols-[auto_1fr] md:grid-cols-[auto_14rem_1fr] gap-x-6 gap-y-1 py-4 border-b border-ink-rule items-baseline">
                     <span className="font-mono text-[11px] text-gold tabular-nums">L{i + 1}</span>
                     <span>
-                      <span className="font-mono text-[10px] text-paper/40 block">{n}</span>
+                      <span className="font-mono text-[10px] text-paper/60 block">{n}</span>
                       <span className="font-display text-lg text-paper font-medium">{t}</span>
                     </span>
                     <span className="text-sm text-paper/60 leading-relaxed md:mt-1">{d}</span>
@@ -490,7 +494,7 @@ export default function PresentationMode({ isOpen, onClose }) {
 
               <div className="grid grid-cols-1 md:grid-cols-2 border border-ink-rule mt-10">
                 <div className="p-6 md:p-8 md:border-r border-b md:border-b-0 border-ink-rule">
-                  <span className="annotation text-paper/40">Without Inklu</span>
+                  <span className="annotation text-paper/60">Without Inklu</span>
                   <h3 className="font-display text-xl text-paper/85 font-medium mt-3">The cycle of disengagement</h3>
                   <ul className="text-sm text-paper/60 space-y-3 mt-4">
                     <li className="flex gap-3"><span aria-hidden="true" className="text-paper/30">✕</span>Drop-out when technical English overwhelms.</li>
@@ -601,11 +605,15 @@ export default function PresentationMode({ isOpen, onClose }) {
 
       {/* ── Footer controls ─────────────────────────────────────── */}
       <footer className="px-5 sm:px-8 py-3 border-t border-ink-rule flex items-center justify-between shrink-0">
-        <span className="annotation text-paper/40 hidden sm:block">
+        <span className="annotation text-paper/60 hidden sm:block">
           Learning without barriers
         </span>
 
-        <div className="flex items-center gap-1.5" role="tablist" aria-label="Slides">
+        <div
+          className="flex items-center gap-1.5"
+          role="group"
+          aria-label="Slides"
+        >
           {Array.from({ length: TOTAL }).map((_, idx) => (
             <button
               key={idx}

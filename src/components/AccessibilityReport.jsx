@@ -63,7 +63,7 @@ export default function AccessibilityReport() {
           {ACCESSIBILITY_EVIDENCE.principles.map((p, i) => (
             <Reveal key={p.name} delay={i * 80}>
               <div className="flex items-baseline gap-4">
-                <span className="font-display text-4xl font-light text-rule tabular-nums">
+                <span className="font-display text-4xl font-light text-muted tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display text-2xl font-medium text-ink">{p.name}</h3>
@@ -112,7 +112,7 @@ export default function AccessibilityReport() {
 
         {/* Honest limits — disclosed, not buried */}
         <Reveal className="mt-14 border-l-2 border-gold-deep pl-6">
-          <span className="annotation text-gold-deep block mb-4">
+          <span className="annotation text-gold-ink block mb-4">
             Known limits, disclosed
           </span>
           <ul className="space-y-5 max-w-3xl">

@@ -27,10 +27,10 @@ export default function Problem() {
                 {/* Chapter numeral in the margin */}
                 <div className={`lg:col-span-2 ${flip ? "lg:order-2" : ""}`}>
                   <Reveal className="lg:sticky lg:top-28 flex lg:flex-col items-baseline lg:items-start gap-4">
-                    <span className="font-display text-7xl lg:text-8xl font-light text-rule leading-none tabular-nums select-none">
+                    <span className="font-display text-7xl lg:text-8xl font-light text-muted leading-none tabular-nums select-none">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
-                    <span className="annotation text-gold-deep">
+                    <span className="annotation text-gold-ink">
                       {pillar.category}
                     </span>
                   </Reveal>

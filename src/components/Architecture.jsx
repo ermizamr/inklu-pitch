@@ -46,7 +46,7 @@ export default function Architecture() {
                     <span className="flex items-baseline gap-4">
                       <span
                         className={`font-mono text-[11px] tabular-nums ${
-                          selected === i ? "text-gold" : "text-paper/40"
+                          selected === i ? "text-gold" : "text-paper/60"
                         }`}
                       >
                         L{i + 1}
@@ -59,7 +59,7 @@ export default function Architecture() {
                         >
                           {l.name}
                         </span>
-                        <span className="block font-mono text-[10.5px] text-paper/45 mt-0.5">
+                        <span className="block font-mono text-[10.5px] text-paper/60 mt-0.5">
                           {l.tech}
                         </span>
                       </span>

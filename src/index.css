@@ -25,6 +25,8 @@
   --color-forest-bright: #2E6B54;
   --color-gold: #F2C675;
   --color-gold-deep: #C99A45;
+  /* Gold that passes AA as small text on paper (4.9:1) */
+  --color-gold-ink: #8A6420;
   --color-body: #2C3E37;
   --color-muted: #5C6E64;
 
@@ -190,18 +192,20 @@
   display: inline-grid;
   vertical-align: bottom;
 }
-.lang-swap > span {
-  grid-area: 1 / 1;
-  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
 .lang-swap > span[data-active="false"] {
   opacity: 0;
+  visibility: hidden;
   transform: translateY(0.35em);
   pointer-events: none;
   user-select: none;
 }
+.lang-swap > span {
+  grid-area: 1 / 1;
+  transition: opacity 0.55s ease, visibility 0.55s, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .lang-swap > span[data-active="true"] {
   opacity: 1;
+  visibility: visible;
   transform: none;
 }
 
