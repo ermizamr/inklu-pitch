@@ -39,6 +39,39 @@
   font-family: var(--font-ethiopic);
 }
 
+/* Pitch Mode robust slide layout */
+.pitch-shell {
+  height: 100dvh;
+  max-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+}
+
+.pitch-main {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.pitch-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.pitch-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pitch-scroll::-webkit-scrollbar-thumb {
+  background: rgba(242, 198, 117, 0.25);
+  border-radius: 9999px;
+}
+
+.pitch-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 198, 117, 0.5);
+}
+
 /* Accessible focus styling */
 :focus-visible {
   outline: 3px solid #183E34;
